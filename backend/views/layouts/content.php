@@ -20,7 +20,7 @@ use dmstr\widgets\Alert;
         <?= Alert::widget() ?>
         <?= $content ?>
     </section>
-
+<!--
     <footer class="footer">
         <div class="container">
             <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
@@ -28,5 +28,5 @@ use dmstr\widgets\Alert;
             <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
     </footer>
-
+-->
 </aside>
