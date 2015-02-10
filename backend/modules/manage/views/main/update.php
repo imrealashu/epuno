@@ -11,6 +11,10 @@ use yii\helpers\Html;
 		<label class="control-label">Add New Course</label><br/>
 		<?= Html::Button('Add New Course',['class'=>'btn btn-success btn-sm', 'id'=>'addNewCourse']) ?>
 	</div>
-	<div id="allCourseContainer"></div>
 	<div id="newCourseContainer"></div>
+	<div id="allCourseContainer">
+		<?= $this->render('_ajaxCourses', [
+        'courses' => $courses,
+    ]) ?>
+	</div>
 </div>

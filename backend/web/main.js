@@ -17,11 +17,19 @@ $(document).ready(function() {
 
 	$(document).on('click','#saveNewCourse',function() {
 		$.post('index.php?r=manage/main/save-new-course',$('#course-form').serialize()+'&course_id='+$('#coursedetails-course_id').val(),function(data){
-			
 			$.post('index.php?r=manage/main/get-all-course',{'institute_id':$('#institutedetails-institute_id').val()},function(response){
 				$('#allCourseContainer').html(response);
 				});
 			});
-		
 	});
-})
+	$(document).on('click','#addNewLevelButton',function(){
+		$.post('index.php?r=manage/main/add-new-level',{'institute_id':$('#institutedetails-institute_id').val(),'course_id':$('#coursedetails-course_id').val()},function(data){
+			$('#addNewLevelContainer').html(data).addClass('bg bg-danger');
+		});
+	});
+	$(document).on('click','#saveNewLevelButton',function(){
+		$.post('index.php?r=manage/main/save-new-level',$('#level-form').serialize()+'&level_id='+$('#courselevels-level_id').val(),function(){
+			$('#addNewLevelContainer').html('');
+		});
+	});
+});
