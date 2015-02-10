@@ -1,6 +1,8 @@
 <?php
 
 namespace backend\modules\manage\models;
+use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
 
 use Yii;
 
@@ -32,6 +34,18 @@ class InstituteDetails extends \yii\db\ActiveRecord
     {
         return 'institute_details';
     }
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+            ],
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -39,12 +53,13 @@ class InstituteDetails extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'address', 'email', 'contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards', 'estd', 'created_at', 'updated_at', 'user_id', 'status'], 'required'],
-            [['address'], 'string'],
-            [['estd', 'created_at', 'updated_at', 'user_id', 'status'], 'integer'],
-            [['name'], 'string', 'max' => 128],
-            [['email'], 'string', 'max' => 64],
-            [['contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards'], 'string', 'max' => 32]
+           //[['name', 'address', 'email', 'contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards', 'estd', 'created_at', 'updated_at', 'user_id', 'status'], 'required'],
+           [['address'], 'string'],
+           [['estd', 'created_at', 'updated_at', 'user_id', 'status'], 'integer'],
+           [['name'], 'string', 'max' => 128],
+           [['email'], 'string', 'max' => 64],
+           [['email'],'email'], 
+           [['contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards'], 'string', 'max' => 32]
         ];
     }
 
@@ -65,6 +80,7 @@ class InstituteDetails extends \yii\db\ActiveRecord
             'affiliation' => 'Affiliation',
             'awards' => 'Awards',
             'estd' => 'Estd',
+            'logo' => 'Logo',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'user_id' => 'User ID',

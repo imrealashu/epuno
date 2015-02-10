@@ -2,7 +2,7 @@
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
 ?>
-<aside class="right-side">
+<aside class="right-side" style="margin-top:60px">
     <section class="content-header">
         <h1>
             <?= \yii\helpers\Inflector::camel2words(\yii\helpers\Inflector::id2camel($this->context->module->id)) ?>

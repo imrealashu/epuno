@@ -1,6 +1,6 @@
 <?php
 use yii\bootstrap\Nav;
-
+use yii\helpers\Url;
 ?>
 <aside class="left-side sidebar-offcanvas">
 
@@ -55,13 +55,13 @@ use yii\bootstrap\Nav;
                     <i class="fa fa-angle-down"></i> <span class="text-info">Menu AdminLTE</span>
                 </a>
             </li>
-            <li class="active">
+            <li class="">
                 <a href="<?= $directoryAsset ?>/index.html">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="">
-                <a href="<?= $directoryAsset ?>/index.html">
+            <li class="active">
+                <a href="<?= Url::to('manage/main/create') ?>">
                     <i class="fa fa-dashboard"></i> <span>Manage Details</span>
                 </a>
             </li>

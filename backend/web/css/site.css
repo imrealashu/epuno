@@ -89,3 +89,14 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+#loading{
+   /* position: fixed;
+    right: 0px;
+    top: 20px;
+    z-index: 9999999;*/
+    margin-left: 50px;
+    display: none;
+}
+#notification{
+    margin-left: 100px;
+}

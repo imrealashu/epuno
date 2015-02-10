@@ -14,7 +14,7 @@ AppAsset::register($this);
 
 <?= Html::a(Yii::$app->name, Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
-<nav class="navbar navbar-static-top" role="navigation">
+<nav class="navbar navbar-fixed-top" role="navigation">
 
 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
     <span class="sr-only">Toggle navigation</span>
@@ -22,6 +22,7 @@ AppAsset::register($this);
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
 </a>
+<div id="loading" class="affix"><img src="ajax-loader.gif"><b>Loading...</b></div>
 
 <div class="navbar-right">
 
