@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 ?>
 <div class="level">
 
-    <?php $form = ActiveForm::begin(['id'=>'level-form']); ?>
+    <?php $form = ActiveForm::begin(['id'=>'level-form','enableAjaxValidation'=>true]); ?>
         <?= $form->field($model,'level_id')->textInput(['disabled'=>'disabled'])?>
         <?= $form->field($model, 'name') ?>
         <?= $form->field($model, 'duration') ?>

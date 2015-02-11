@@ -55,11 +55,11 @@ class InstituteDetails extends \yii\db\ActiveRecord
         return [
            //[['name', 'address', 'email', 'contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards', 'estd', 'created_at', 'updated_at', 'user_id', 'status'], 'required'],
            [['address'], 'string'],
-           [['estd', 'created_at', 'updated_at', 'user_id', 'status'], 'integer'],
+           [['estd', 'created_at', 'updated_at', 'user_id', 'status','zoom'], 'integer'],
            [['name'], 'string', 'max' => 128],
            [['email'], 'string', 'max' => 64],
            [['email'],'email'], 
-           [['contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards'], 'string', 'max' => 32]
+           [['contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards','longitude','latitude'], 'string', 'max' => 32]
         ];
     }
 
@@ -70,7 +70,7 @@ class InstituteDetails extends \yii\db\ActiveRecord
     {
         return [
             'institute_id' => 'Institute ID',
-            'name' => 'Name',
+            'name' => 'Institute Name',
             'address' => 'Address',
             'email' => 'Email',
             'contact_person' => 'Contact Person',

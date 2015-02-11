@@ -47,7 +47,8 @@ class CourseLevels extends ActiveRecord
     {
         return [
             [['course_id', 'institute_id', 'updated_at', 'created_at', 'user_id'], 'integer'],
-            [['name', 'duration', 'amount'], 'string', 'max' => 128]
+            [['name', 'duration', 'amount'], 'string', 'max' => 128],
+            [['amount'],'number']
         ];
     }
 

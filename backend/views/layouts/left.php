@@ -61,7 +61,7 @@ use yii\helpers\Url;
                 </a>
             </li>
             <li class="active">
-                <a href="<?= Url::to('index.php?r=manage/main/create') ?>">
+                <a href="<?= Url::to('index.php?r=manage/main/') ?>">
                     <i class="fa fa-dashboard"></i> <span>Manage Details</span>
                 </a>
             </li>

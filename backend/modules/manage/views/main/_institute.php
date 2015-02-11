@@ -35,9 +35,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'awards')->textInput(['maxlength' => 32]) ?>
 
     <?= $form->field($model, 'estd')->textInput() ?>
+        <fieldset class="gllpLatlonPicker">
+        <input type="text" class="gllpSearchField">
+        <input type="button" class="gllpSearchButton" value="search">
+        <br/>
+        <div class="gllpMap">Google Maps</div>
+        <?= $form->field($model, 'latitude')->textInput(['class'=>'gllpLatitude']) ?>
+        <?= $form->field($model, 'longitude')->textInput(['class'=>'gllpLongitude']) ?>
+        <?= $form->field($model, 'zoom')->textInput(['class'=>'gllpZoom']) ?>
+        <input type="button" class="gllpUpdateButton" value="update map">
 
+        </fieldset><br/>
     <?= Html::Button('Save Institute Details',['id'=>'w0-save','class'=>'btn btn-success'])?>
              
     <?php ActiveForm::end(); ?>
 <?php Pjax::end() ?>
+
 </div>

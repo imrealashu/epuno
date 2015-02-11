@@ -15,6 +15,7 @@ use yii\helpers\Html;
 	<div id="allCourseContainer">
 		<?= $this->render('_ajaxCourses', [
         'courses' => $courses,
+        'levels' => $levels,
     ]) ?>
 	</div>
 </div>

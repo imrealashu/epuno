@@ -9,7 +9,9 @@ use yii\bootstrap\NavBar;
 
 AppAsset::register($this);
 ?>
-
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKKznBRqLqR9OuSkhr93hOefdG3oEwHCk">
+</script>
 <header class="header">
 
 <?= Html::a(Yii::$app->name, Yii::$app->homeUrl, ['class' => 'logo']) ?>

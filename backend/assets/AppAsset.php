@@ -19,9 +19,11 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'gmap_picker/css/jquery-gmaps-latlon-picker.css'
     ];
     public $js = [
         'main.js',
+        'gmap_picker/js/jquery-gmaps-latlon-picker.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
