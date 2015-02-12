@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
+use kartik\file\FileInput;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\manage\models\InstituteDetails */
 /* @var $form yii\widgets\ActiveForm */
@@ -14,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php  Pjax::begin() ?>
     <?php $form = ActiveForm::begin(); ?>
     
-    <?= $form->field($model, 'institute_id')->textInput(['disabled'=>'disabled']) ?>
+    <input type="hidden" value="<?= $model->institute_id ?>" id="institutedetails-institute_id" />
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
 
@@ -35,7 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $form->field($model, 'awards')->textInput(['maxlength' => 32]) ?>
 
     <?= $form->field($model, 'estd')->textInput() ?>
+
+   
         <fieldset class="gllpLatlonPicker">
+            <br/>
         <input type="text" class="gllpSearchField">
         <input type="button" class="gllpSearchButton" value="search">
         <br/>

@@ -7,7 +7,9 @@ use backend\modules\manage\models\InstituteDetails;
 use backend\modules\manage\models\InstituteDetailsSearch;
 use backend\modules\manage\models\CourseDetails;
 use backend\modules\manage\models\CourseLevels;
+use backend\modules\manage\models\CourseCategories;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class MainController extends Controller
 {
@@ -20,6 +22,18 @@ class MainController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+    public function actionFileUpload(){
+        $model = InstituteDetails::findOne(yii::$app->request->post('i_id'));
+        if ($model->load(yii::$app->request->post())) {
+              $model->logo = UploadedFile::getInstance($model, 'file');
+
+            if ($model->logo) {     
+                $model->logo = $i_id;
+                $model->logo->saveAs('uploads/' . $model->institute_id . '.' . $model->logo->extension);
+                $model->save();
+            }
+        }
     }
     public function actionCreate(){
     	$model = new InstituteDetails();
@@ -124,6 +138,27 @@ class MainController extends Controller
         $courses = CourseDetails::find()->where(['institute_id'=>yii::$app->request->post('institute_id')])->asArray()->all();
         $levels = CourseLevels::find()->where(['institute_id'=>yii::$app->request->post('institute_id')])->asArray()->all();
         return $this->renderPartial('_ajaxCourses',['courses'=>array_reverse($courses),'levels'=>array_reverse($levels)]);
+    }
+    public function actionAddCategory(){
+        $model = new CourseCategories();
+        $model->save();
+        $categories = CourseCategories::findOne($model->category_id);
+          return $this->renderPartial('_category',['model'=>$categories]);
+        
+    }
+    public function actionSaveCategory(){
+        $category_id = yii::$app->request->post('category_id');
+        $model = CourseCategories::findOne($category_id);
+        $model->user_id = yii::$app->user->identity->id;
+        $model->name = yii::$app->request->post('category_name');
+        $model->status = 1;
+        $model->save();
+        $all = CourseCategories::find()->where(['status'=>1])->asArray()->all();
+        $content = "";
+        foreach($all as $category){
+            $content.= '<option value="'.$category['category_id'].'">'.$category['name'].'</option>';
+        }
+        echo $content;
     }
     protected function findInstituteById($id){
     	  if (($model = InstituteDetails::find()->where(['institute_id'=>$id])) !== null) {

@@ -3,6 +3,8 @@
 namespace backend\modules\manage\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "course_categories".
@@ -13,7 +15,7 @@ use Yii;
  * @property integer $updated_at
  * @property integer $user_id
  */
-class CourseCategories extends \yii\db\ActiveRecord
+class CourseCategories extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -23,14 +25,26 @@ class CourseCategories extends \yii\db\ActiveRecord
         return 'course_categories';
     }
 
+ public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+            ],
+        ];
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['name', 'created_at', 'updated_at', 'user_id'], 'required'],
-            [['created_at', 'updated_at', 'user_id'], 'integer'],
+            //[['name', 'created_at', 'updated_at', 'user_id'], 'required'],
+            [['created_at', 'updated_at', 'user_id','status'], 'integer'],
             [['name'], 'string', 'max' => 64]
         ];
     }

@@ -50,6 +50,7 @@ class InstituteDetails extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $file;
     public function rules()
     {
         return [
@@ -58,7 +59,8 @@ class InstituteDetails extends \yii\db\ActiveRecord
            [['estd', 'created_at', 'updated_at', 'user_id', 'status','zoom'], 'integer'],
            [['name'], 'string', 'max' => 128],
            [['email'], 'string', 'max' => 64],
-           [['email'],'email'], 
+           [['email'],'email'],
+           [['logo'], 'file', 'skipOnEmpty' => true],
            [['contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards','longitude','latitude'], 'string', 'max' => 32]
         ];
     }

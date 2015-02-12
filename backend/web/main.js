@@ -9,9 +9,13 @@ $(document).ready(function() {
 	});
 
 	$(document).on('click','#addNewCourse',function(){
-		$.post('index.php?r=manage/main/new-course-field',{'institute_id':$('#institutedetails-institute_id').val()},function(data){
-			$('#newCourseContainer').html(data).fadeIn();
+			$('#newCourseContainer').hide();
+			$.post('index.php?r=manage/main/new-course-field',{'institute_id':$('#institutedetails-institute_id').val()},function(data){
+			$('#newCourseContainer').html(data).slideDown();
 		});
+	});
+	$(document).on('click','#closeCourseButton',function(){
+		$(this).parent().parent().parent().slideUp();
 	});
 
 	$(document).on('click','#saveNewCourse',function() {
@@ -24,10 +28,11 @@ $(document).ready(function() {
 	});
 
 	$(document).on('click','#editCourseButton',function(){
+		$('.editCourseContainer').hide();
 		$that = $(this);
 		$.post('index.php?r=manage/main/edit-course',{'course_id':$(this).attr('course-id')},function(data){
 			//$('#newCourseContainer').html(data).fadeIn();
-			$that.parent().parent().parent().find('.editCourseContainer').html(data);
+			$that.parent().parent().parent().find('.editCourseContainer').html(data).slideDown();
 		});
 	});
 	
@@ -42,8 +47,9 @@ $(document).ready(function() {
 	});
 
 	$(document).on('click','#addNewLevelButton',function(){
+		$('#addNewLevelContainer').hide();
 		$.post('index.php?r=manage/main/add-new-level',{'institute_id':$('#institutedetails-institute_id').val(),'course_id':$('#coursedetails-course_id').val()},function(data){
-			$('#addNewLevelContainer').slideDown('slow').html(data).addClass('bg bg-danger');
+			$('#addNewLevelContainer').html(data).slideDown();
 		});
 	});
 	$(document).on('click','#saveNewLevelButton',function(){
@@ -67,6 +73,16 @@ $(document).ready(function() {
 				$('#allCourseContainer').html(data).fadeIn();
 			});
 		}
-
+	});
+	$(document).on('click','#addNewCategoryButton',function(){
+		$.post('index.php?r=manage/main/add-category',function(data){
+			$('#addNewCategoryContainer').html(data);
+		});
+	});
+	$(document).on('click','#saveCategoryButton',function(){
+		$.post('index.php?r=manage/main/save-category','category_name='+$('#coursecategories-name').val()+'&category_id='+$('#coursecategories-category_id').val(),function(data){
+			$('#coursedetails-category_id').html(data);
+			$('#addNewCategoryContainer').slideUp();
+		});
 	});
 });

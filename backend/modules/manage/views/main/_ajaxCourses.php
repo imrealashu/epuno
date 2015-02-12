@@ -1,5 +1,6 @@
 <?php
 use backend\modules\manage\models\HeldOn;
+use backend\modules\manage\models\CourseCategories;
 use yii\helpers\Html;
 foreach ($courses as $course):
 	?>
@@ -12,6 +13,7 @@ foreach ($courses as $course):
 	</div>
 	<div class="panel-body">
 		<p><label>Course Name: &nbsp</label><?= $course['name']?></p>
+		<p><label>Category:&nbsp</label><?= CourseCategories::findOne($course['category_id'])['name']?></p>
 		<p><label>Held On:&nbsp</label><?= HeldOn::findOne($course['held_on'])['value']?></p>
 		<div class="editCourseContainer"></div>		
 	</div> 
