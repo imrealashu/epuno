@@ -43,10 +43,17 @@ class CourseLevels extends ActiveRecord
     /**
      * @inheritdoc
      */
+    public function scenarios(){
+        $scenarios = parent::scenarios();
+        $scenarios['new'] = [];
+        return $scenarios;
+    }
+
     public function rules()
     {
         return [
-            [['course_id', 'institute_id', 'updated_at', 'created_at', 'user_id'], 'integer'],
+            [['name','amount','duration'],'required','on'=>'update'],
+            [['course_id','institute_id','updated_at','created_at','user_id','status'], 'integer'],
             [['name', 'duration', 'amount'], 'string', 'max' => 128],
             [['amount'],'number']
         ];
@@ -67,6 +74,7 @@ class CourseLevels extends ActiveRecord
             'updated_at' => 'Updated At',
             'created_at' => 'Created At',
             'user_id' => 'User ID',
+            'status'=>'Status',
         ];
     }
 }

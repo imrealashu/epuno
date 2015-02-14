@@ -8,12 +8,13 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\manage\models\InstituteDetails */
 /* @var $form yii\widgets\ActiveForm */
-$this->title = 'Add New Institute';
-$this->params['breadcrumbs'][] = $this->title;
+//$this->title = 'Add New Institute';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="institute-details-form">
 <?php  Pjax::begin() ?>
+<div id="institute-details-form-content">
     <?php $form = ActiveForm::begin(); ?>
     
     <input type="hidden" value="<?= $model->institute_id ?>" id="institutedetails-institute_id" />
@@ -38,16 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'estd')->textInput() ?>
 
-   
+</div>
         <fieldset class="gllpLatlonPicker">
             <br/>
-        <input type="text" class="gllpSearchField">
-        <input type="button" class="gllpSearchButton" value="search">
+        <input type="text" class="form-control gllpSearchField" placeholder="Search location here...">
+        <input type="button" class="btn btn-default gllpSearchButton" value="search">
         <br/>
-        <div class="gllpMap">Google Maps</div>
-        <?= $form->field($model, 'latitude')->textInput(['class'=>'gllpLatitude']) ?>
-        <?= $form->field($model, 'longitude')->textInput(['class'=>'gllpLongitude']) ?>
-        <?= $form->field($model, 'zoom')->textInput(['class'=>'gllpZoom']) ?>
+        <div class="gllpMap" style="border:2px #999 solid; ">Google Maps</div>
+        <?= $form->field($model, 'latitude')->textInput(['class'=>'form-control gllpLatitude']) ?>
+        <?= $form->field($model, 'longitude')->textInput(['class'=>'form-control gllpLongitude']) ?>
+        <?= $form->field($model, 'zoom')->textInput(['class'=>'form-control gllpZoom']) ?>
         <input type="button" class="gllpUpdateButton" value="update map">
 
         </fieldset><br/>

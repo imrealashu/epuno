@@ -42,11 +42,17 @@ class CourseDetails extends ActiveRecord
     /**
      * @inheritdoc
      */
+    public function scenarios(){
+        $scenarios = parent::scenarios();
+        $scenarios['new'] = [];
+        return $scenarios;
+    }
+
     public function rules()
     {
         return [
-            //[['category_id', 'institute_id', 'name', 'held_on', 'created_at', 'updated_at', 'user_id'], 'required'],
-            [['category_id', 'institute_id', 'held_on', 'created_at', 'updated_at', 'user_id'], 'integer'],
+            [['category_id', 'institute_id', 'name', 'created_at', 'updated_at', 'user_id','status','held_on'], 'required','on'=>'update'],
+            [['category_id', 'institute_id', 'created_at', 'updated_at', 'user_id','held_on','status'], 'integer'],
             [['name'], 'string', 'max' => 64]
         ];
     }

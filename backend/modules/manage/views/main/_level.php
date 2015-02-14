@@ -4,9 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 ?>
-<div class="level" style="padding:5px; background-color:#b3b3b3">
-    <h4 class="text-center"><label>Add Level</label></h4>
-    <?php $form = ActiveForm::begin(['id'=>'level-form','enableAjaxValidation'=>true]); ?>
+<div class="level">
+    <?php $form = ActiveForm::begin(['id'=>'level-form']); ?>
         <input type="hidden" value="<?= $model->level_id ?>" id="courselevels-level_id"/>
         <?= $form->field($model, 'name') ?>
         <?= $form->field($model, 'duration') ?>
