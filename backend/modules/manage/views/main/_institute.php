@@ -21,6 +21,8 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
 
+    <?= $form->field($model, 'city')->textInput(['maxlength' => 64]) ?>
+
     <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => 64]) ?>

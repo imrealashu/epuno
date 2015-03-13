@@ -23,6 +23,14 @@ class MainController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionDelete($i_id){
+        //$i_id = yii::$app->request->post('i_id');
+        $model = InstituteDetails::findOne($i_id);
+        $model->status = 0;
+        $model->save();
+
+        return $this->redirect('index.php?r=manage/main');
+    }
     public function actionFileUpload(){
         $model = InstituteDetails::findOne(yii::$app->request->post('i_id'));
         if ($model->load(yii::$app->request->post())) {

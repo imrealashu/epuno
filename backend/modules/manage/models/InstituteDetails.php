@@ -60,7 +60,7 @@ class InstituteDetails extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-           [['name', 'address', 'email', 'contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards', 'estd', 'created_at', 'updated_at', 'user_id', 'status'], 'required','on'=>'update'],
+           [['name', 'address','city' ,'email', 'contact_person', 'landline_number', 'phone_number', 'website', 'affiliation', 'awards', 'estd', 'created_at', 'updated_at', 'user_id', 'status'], 'required','on'=>'update'],
            [['address'], 'string'],
            [['estd', 'created_at', 'updated_at', 'user_id', 'status','zoom'], 'integer'],
            [['name'], 'string', 'max' => 128],
